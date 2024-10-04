@@ -1,4 +1,4 @@
-import { stdin, stdout, cwd } from 'node:process'
+import { stdin, stdout } from 'node:process'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import { getUserName } from './helpers/getUserName.js'
@@ -14,8 +14,6 @@ import {
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-
-let currentDir = cwd()
 
 const runApp = () => {
   const userName = getUserName()
@@ -43,7 +41,7 @@ const runApp = () => {
           cd(argument)
           break
         case 'ls':
-          ls(currentDir)
+          ls()
           break
         default:
           console.error(INVALID_INPUT_MSG + '\n')
