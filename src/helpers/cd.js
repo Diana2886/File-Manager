@@ -12,11 +12,4 @@ export const cd = (path) => {
   }
 
   chdir(targetDir)
-
-  //   try {
-  //     chdir(targetDir)
-  //     callback(targetDir)
-  //   } catch (err) {
-  //     console.error(`chdir: ${err}`)
-  //   }
 }
