@@ -4,13 +4,15 @@ import { dirname, join } from 'path'
 import { getUserName } from './helpers/getUserName.js'
 import { exit } from './helpers/exit.js'
 import { printWorkingDirectory } from './helpers/printWorkingDirectory.js'
+import {
+  logInvalidInputMsg,
+  logOperationFailedMsg,
+} from './helpers/logErrorMsg.js'
 import { up } from './helpers/up.js'
 import { cd } from './helpers/cd.js'
 import { ls } from './helpers/ls.js'
-import {
-  INVALID_INPUT_MSG,
-  OPERATION_FAILED_MSG,
-} from './constants/error-msgs.js'
+import { cat } from './helpers/cat.js'
+import { add } from './helpers/add.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -36,20 +38,34 @@ const runApp = () => {
           break
         case 'cd':
           if (!argument) {
-            console.error(INVALID_INPUT_MSG + '\n')
+            logInvalidInputMsg()
+          } else {
+            cd(argument)
           }
-          cd(argument)
           break
         case 'ls':
           ls()
           break
+        case 'cat':
+          if (!argument) {
+            logInvalidInputMsg()
+          } else {
+            cat(argument)
+          }
+          break
+        case 'add':
+          if (!argument) {
+            logInvalidInputMsg()
+          } else {
+            add(argument)
+          }
+          break
         default:
-          console.error(INVALID_INPUT_MSG + '\n')
+          logInvalidInputMsg()
           break
       }
     } catch (error) {
-      console.error(error + '\n')
-      console.error(OPERATION_FAILED_MSG + '\n')
+      logOperationFailedMsg()
     }
 
     printWorkingDirectory()
