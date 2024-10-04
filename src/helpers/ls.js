@@ -1,7 +1,6 @@
 import { access, readdir } from 'fs/promises'
-import { dirname, join } from 'path'
-import { fileURLToPath } from 'url'
 import { cwd } from 'process'
+import { logOperationFailedMsg } from './logErrorMsg.js'
 
 export const ls = async () => {
   const currentDir = cwd()
@@ -26,6 +25,6 @@ export const ls = async () => {
     const allFiles = [...dirList, ...fileList]
     console.table(allFiles)
   } catch (err) {
-    throw err
+    logOperationFailedMsg()
   }
 }
