@@ -1,15 +1,8 @@
-import { resolve, isAbsolute } from 'path'
-import { chdir, cwd } from 'process'
+import { chdir } from 'process'
+import { getAbsolutePath } from '../getAbsolutePath.js'
 
 export const cd = (path) => {
-  const currentDir = cwd()
-  let targetDir
-
-  if (isAbsolute(path)) {
-    targetDir = path
-  } else {
-    targetDir = resolve(currentDir, path)
-  }
+  const targetDir = getAbsolutePath(path)
 
   chdir(targetDir)
 }
