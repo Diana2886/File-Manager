@@ -16,6 +16,7 @@ import { cat } from './bof/cat.js'
 import { add } from './bof/add.js'
 import { rn } from './bof/rn.js'
 import { cp } from './bof/cp.js'
+import { mv } from './bof/mv.js'
 
 const runApp = () => {
   const userName = getUserName()
@@ -53,6 +54,9 @@ const runApp = () => {
           break
         case 'cp':
           cp(cwd(), args[0], args[1])
+          break
+        case 'mv':
+          mv(cwd(), args[0], args[1])
           break
         default:
           logInvalidInputMsg()
