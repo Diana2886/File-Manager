@@ -1,4 +1,4 @@
-import { logInvalidInputMsg } from './logErrorMsg.js'
+import { INVALID_INPUT_MSG } from '../constants/error-msgs.js'
 
 export const validateArgs = (command, args) => {
   switch (command) {
@@ -7,7 +7,7 @@ export const validateArgs = (command, args) => {
     case 'add':
     case 'rm':
       if (args.length !== 1) {
-        logInvalidInputMsg()
+        throw new Error(INVALID_INPUT_MSG)
       }
       break
 
@@ -15,14 +15,14 @@ export const validateArgs = (command, args) => {
     case 'cp':
     case 'mv':
       if (args.length !== 2) {
-        logInvalidInputMsg()
+        throw new Error(INVALID_INPUT_MSG)
       }
       break
 
     case 'up':
     case 'ls':
       if (args.length !== 0) {
-        logInvalidInputMsg()
+        throw new Error(INVALID_INPUT_MSG)
       }
       break
   }
