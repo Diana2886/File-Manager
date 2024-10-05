@@ -14,6 +14,7 @@ import { cd } from './nwd/cd.js'
 import { ls } from './nwd/ls.js'
 import { cat } from './bof/cat.js'
 import { add } from './bof/add.js'
+import { rn } from './bof/rn.js'
 
 const runApp = () => {
   const userName = getUserName()
@@ -47,7 +48,7 @@ const runApp = () => {
           add(cwd(), args[0])
           break
         case 'rn':
-          rn(args[0], args[1])
+          rn(cwd(), args[0], args[1])
           break
         default:
           logInvalidInputMsg()
