@@ -8,6 +8,7 @@ import {
   logInvalidInputMsg,
   logOperationFailedMsg,
 } from './helpers/logErrorMsg.js'
+import { INVALID_INPUT_MSG } from './constants/error-msgs.js'
 import { up } from './nwd/up.js'
 import { cd } from './nwd/cd.js'
 import { ls } from './nwd/ls.js'
@@ -53,7 +54,9 @@ const runApp = () => {
           break
       }
     } catch (error) {
-      logOperationFailedMsg()
+      error.message === INVALID_INPUT_MSG
+        ? logInvalidInputMsg()
+        : logOperationFailedMsg()
     }
 
     printWorkingDirectory(cwd())
