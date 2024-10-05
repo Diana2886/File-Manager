@@ -6,6 +6,7 @@ export const validateArgs = (command, args) => {
     case 'cat':
     case 'add':
     case 'rm':
+    case 'hash':
       if (args.length !== 1) {
         throw new Error(INVALID_INPUT_MSG)
       }

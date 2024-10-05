@@ -19,6 +19,7 @@ import { rn } from './bof/rn.js'
 import { cp } from './bof/cp.js'
 import { mv } from './bof/mv.js'
 import { remove as rm } from './bof/rm.js'
+import { hash } from './hash/hash.js'
 
 const runApp = () => {
   const userName = getUserName()
@@ -65,6 +66,9 @@ const runApp = () => {
           break
         case 'os':
           handleOsCommand(args[0])
+          break
+        case 'hash':
+          hash(cwd(), args[0])
           break
         default:
           logInvalidInputMsg()
