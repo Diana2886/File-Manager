@@ -4,6 +4,7 @@ import { exit } from './helpers/exit.js'
 import { parseCommand } from './helpers/parseCommand.js'
 import { validateArgs } from './helpers/validateArgs.js'
 import { printWorkingDirectory } from './helpers/printWorkingDirectory.js'
+import { handleOsCommand } from './osi/handleOsCommand.js'
 import {
   logInvalidInputMsg,
   logOperationFailedMsg,
@@ -61,6 +62,9 @@ const runApp = () => {
           break
         case 'rm':
           rm(cwd(), args[0])
+          break
+        case 'os':
+          handleOsCommand(args[0])
           break
         default:
           logInvalidInputMsg()
