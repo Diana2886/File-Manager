@@ -2,14 +2,14 @@ import { createReadStream } from 'fs'
 import { pipeline } from 'stream/promises'
 import { stdout } from 'process'
 import * as os from 'os'
-import { logOperationFailedMsg } from './logErrorMsg.js'
-import { getAbsolutePath } from './getAbsolutePath.js'
+import { logOperationFailedMsg } from '../helpers/logErrorMsg.js'
+import { getAbsolutePath } from '../helpers/getAbsolutePath.js'
 
 const eol = os.EOL
 
-export const cat = async (filePath) => {
+export const cat = async (currentDir, filePath) => {
   try {
-    const absolutePath = getAbsolutePath(filePath)
+    const absolutePath = getAbsolutePath(currentDir, filePath)
     const readStream = createReadStream(absolutePath)
 
     await pipeline(readStream, stdout, { end: false })

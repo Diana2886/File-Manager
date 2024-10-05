@@ -1,10 +1,7 @@
 import { access, readdir } from 'fs/promises'
-import { cwd } from 'process'
-import { logOperationFailedMsg } from './logErrorMsg.js'
+import { logOperationFailedMsg } from '../helpers/logErrorMsg.js'
 
-export const ls = async () => {
-  const currentDir = cwd()
-
+export const ls = async (currentDir) => {
   const dirList = []
   const fileList = []
 
@@ -13,14 +10,14 @@ export const ls = async () => {
 
     files.forEach((file) => {
       if (file.isDirectory()) {
-        dirList.push({ name: file.name, type: 'directory' })
+        dirList.push({ Name: file.name, Type: 'directory' })
       } else {
-        fileList.push({ name: file.name, type: 'file' })
+        fileList.push({ Name: file.name, Type: 'file' })
       }
     })
 
-    dirList.sort((a, b) => a.name.localeCompare(b.name))
-    fileList.sort((a, b) => a.name.localeCompare(b.name))
+    dirList.sort((a, b) => a.Name.localeCompare(b.Name))
+    fileList.sort((a, b) => a.Name.localeCompare(b.Name))
 
     const allFiles = [...dirList, ...fileList]
     console.table(allFiles)

@@ -1,8 +1,7 @@
 import { resolve, parse } from 'path'
-import { chdir, cwd } from 'process'
+import { chdir } from 'process'
 
-export const up = () => {
-  const currentDir = cwd()
+export const up = (currentDir) => {
   const parsedPath = parse(currentDir)
   let targetDir
 
