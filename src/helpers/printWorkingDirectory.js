@@ -1,7 +1,3 @@
-import { cwd } from 'node:process'
-
-export const printWorkingDirectory = () => {
-  const currentDir = cwd()
-
+export const printWorkingDirectory = (currentDir) => {
   console.log(`You are currently in ${currentDir}`)
 }

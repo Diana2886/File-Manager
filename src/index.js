@@ -1,64 +1,52 @@
-import { stdin, stdout } from 'node:process'
-import { fileURLToPath } from 'url'
-import { dirname, join } from 'path'
+import { stdin, stdout, cwd } from 'process'
 import { getUserName } from './helpers/getUserName.js'
 import { exit } from './helpers/exit.js'
+import { parseCommand } from './helpers/parseCommand.js'
+import { validateArgs } from './helpers/validateArgs.js'
 import { printWorkingDirectory } from './helpers/printWorkingDirectory.js'
 import {
   logInvalidInputMsg,
   logOperationFailedMsg,
 } from './helpers/logErrorMsg.js'
-import { up } from './helpers/up.js'
-import { cd } from './helpers/cd.js'
-import { ls } from './helpers/ls.js'
-import { cat } from './helpers/cat.js'
-import { add } from './helpers/add.js'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+import { up } from './nwd/up.js'
+import { cd } from './nwd/cd.js'
+import { ls } from './nwd/ls.js'
+import { cat } from './bof/cat.js'
+import { add } from './bof/add.js'
 
 const runApp = () => {
   const userName = getUserName()
 
-  printWorkingDirectory()
+  printWorkingDirectory(cwd())
   console.log(`Welcome to the File Manager, ${userName}!`)
 
   stdin.on('data', (data) => {
-    const input = data.toString().trim().split(' ')
-    const command = input[0]
-    const argument = input[1]
-
+    const input = data.toString()
+    const { command, args } = parseCommand(input)
     try {
+      validateArgs(command, args)
+
       switch (command) {
         case '.exit':
           exit(userName)
           break
         case 'up':
-          up()
+          up(cwd())
           break
         case 'cd':
-          if (!argument) {
-            logInvalidInputMsg()
-          } else {
-            cd(argument)
-          }
+          cd(cwd(), args[0])
           break
         case 'ls':
-          ls()
+          ls(cwd())
           break
         case 'cat':
-          if (!argument) {
-            logInvalidInputMsg()
-          } else {
-            cat(argument)
-          }
+          cat(cwd(), args[0])
           break
         case 'add':
-          if (!argument) {
-            logInvalidInputMsg()
-          } else {
-            add(argument)
-          }
+          add(cwd(), args[0])
+          break
+        case 'rn':
+          rn(args[0], args[1])
           break
         default:
           logInvalidInputMsg()
@@ -68,7 +56,7 @@ const runApp = () => {
       logOperationFailedMsg()
     }
 
-    printWorkingDirectory()
+    printWorkingDirectory(cwd())
   })
 }
 
