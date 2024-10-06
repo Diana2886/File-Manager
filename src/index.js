@@ -20,6 +20,8 @@ import { cp } from './bof/cp.js'
 import { mv } from './bof/mv.js'
 import { remove as rm } from './bof/rm.js'
 import { hash } from './hash/hash.js'
+import { compress } from './cdo/compress.js'
+import { decompress } from './cdo/decompress.js'
 
 const runApp = () => {
   const userName = getUserName()
@@ -69,6 +71,12 @@ const runApp = () => {
           break
         case 'hash':
           hash(cwd(), args[0])
+          break
+        case 'compress':
+          compress(cwd(), args[0], args[1])
+          break
+        case 'decompress':
+          decompress(cwd(), args[0], args[1])
           break
         default:
           logInvalidInputMsg()

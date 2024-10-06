@@ -15,6 +15,8 @@ export const validateArgs = (command, args) => {
     case 'rn':
     case 'cp':
     case 'mv':
+    case 'compress':
+    case 'decompress':
       if (args.length !== 2) {
         throw new Error(INVALID_INPUT_MSG)
       }
