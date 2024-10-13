@@ -1,4 +1,4 @@
-import { access, readdir } from 'fs/promises'
+import { access, readdir } from 'node:fs/promises'
 import { logOperationFailedMsg } from '../helpers/logErrorMsg.js'
 
 export const ls = async (currentDir) => {

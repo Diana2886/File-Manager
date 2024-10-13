@@ -1,8 +1,8 @@
-import { createReadStream, createWriteStream } from 'fs'
-import { access, constants, mkdir, rm } from 'fs/promises'
-import { pipeline } from 'stream/promises'
+import { createReadStream, createWriteStream } from 'node:fs'
+import { access, constants, mkdir, rm } from 'node:fs/promises'
+import { pipeline } from 'node:stream/promises'
+import { basename, join } from 'node:path'
 import { logOperationFailedMsg } from '../helpers/logErrorMsg.js'
-import { basename, join } from 'path'
 import { getAbsolutePath } from '../helpers/getAbsolutePath.js'
 
 export const mv = async (currentDir, filePath, dirPath) => {

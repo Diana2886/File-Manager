@@ -1,4 +1,4 @@
-import { EOL, cpus, homedir, userInfo, arch } from 'os'
+import { EOL, cpus, homedir, userInfo, arch } from 'node:os'
 import { logInvalidInputMsg } from '../helpers/logErrorMsg.js'
 
 export const handleOsCommand = (option) => {

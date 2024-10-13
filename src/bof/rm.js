@@ -1,4 +1,4 @@
-import { access, constants, rm } from 'fs/promises'
+import { access, constants, rm } from 'node:fs/promises'
 import { logOperationFailedMsg } from '../helpers/logErrorMsg.js'
 import { getAbsolutePath } from '../helpers/getAbsolutePath.js'
 

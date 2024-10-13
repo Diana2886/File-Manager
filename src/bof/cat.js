@@ -1,7 +1,7 @@
-import { createReadStream } from 'fs'
-import { pipeline } from 'stream/promises'
-import { stdout } from 'process'
-import * as os from 'os'
+import { createReadStream } from 'node:fs'
+import { pipeline } from 'node:stream/promises'
+import { stdout } from 'node:process'
+import * as os from 'node:os'
 import { logOperationFailedMsg } from '../helpers/logErrorMsg.js'
 import { getAbsolutePath } from '../helpers/getAbsolutePath.js'
 

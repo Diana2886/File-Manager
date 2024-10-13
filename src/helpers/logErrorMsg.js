@@ -2,7 +2,7 @@ import {
   INVALID_INPUT_MSG,
   OPERATION_FAILED_MSG,
 } from '../constants/error-msgs.js'
-import * as os from 'os'
+import * as os from 'node:os'
 
 const eol = os.EOL
 

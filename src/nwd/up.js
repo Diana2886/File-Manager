@@ -1,5 +1,5 @@
-import { resolve, parse } from 'path'
-import { chdir } from 'process'
+import { resolve, parse } from 'node:path'
+import { chdir } from 'node:process'
 
 export const up = (currentDir) => {
   const parsedPath = parse(currentDir)

@@ -1,9 +1,9 @@
+import { createReadStream, createWriteStream } from 'node:fs'
+import { pipeline } from 'node:stream/promises'
+import { createBrotliCompress } from 'node:zlib'
+import { access, constants } from 'node:fs/promises'
 import { logOperationFailedMsg } from '../helpers/logErrorMsg.js'
 import { getAbsolutePath } from '../helpers/getAbsolutePath.js'
-import { createReadStream, createWriteStream } from 'fs'
-import { pipeline } from 'stream/promises'
-import { createBrotliCompress } from 'zlib'
-import { access, constants } from 'fs/promises'
 
 export const compress = async (currentDir, filePath, destPath) => {
   const absoluteFilePath = getAbsolutePath(currentDir, filePath)
@@ -13,7 +13,7 @@ export const compress = async (currentDir, filePath, destPath) => {
     await access(absoluteFilePath, constants.F_OK)
 
     const readStream = createReadStream(absoluteFilePath)
-    const writeStream = createWriteStream(absoluteDestPath)
+    const writeStream = createWriteStream(absoluteDestPath + '.br')
     const brotliCompress = createBrotliCompress()
 
     await pipeline(readStream, brotliCompress, writeStream)

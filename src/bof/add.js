@@ -1,6 +1,6 @@
-import { open } from 'fs/promises'
+import { open } from 'node:fs/promises'
+import { join } from 'node:path'
 import { logOperationFailedMsg } from '../helpers/logErrorMsg.js'
-import { join } from 'path'
 
 export const add = async (currentDir, fileName) => {
   const filePath = join(currentDir, fileName)

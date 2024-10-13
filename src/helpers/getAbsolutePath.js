@@ -1,4 +1,4 @@
-import { resolve, isAbsolute } from 'path'
+import { resolve, isAbsolute } from 'node:path'
 import { stripQuotes } from './stripQuotes.js'
 
 export const getAbsolutePath = (currentDir, path) => {

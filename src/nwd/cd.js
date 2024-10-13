@@ -1,4 +1,4 @@
-import { chdir } from 'process'
+import { chdir } from 'node:process'
 import { getAbsolutePath } from '../helpers/getAbsolutePath.js'
 
 export const cd = (currentDir, path) => {

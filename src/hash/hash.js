@@ -1,11 +1,11 @@
-import { access, constants } from 'fs/promises'
+import { access, constants } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
+import { createReadStream } from 'node:fs'
+import { pipeline } from 'node:stream/promises'
+import { stdout } from 'node:process'
+import * as os from 'node:os'
 import { logOperationFailedMsg } from '../helpers/logErrorMsg.js'
 import { getAbsolutePath } from '../helpers/getAbsolutePath.js'
-import { createHash } from 'crypto'
-import { createReadStream } from 'fs'
-import { pipeline } from 'stream/promises'
-import { stdout } from 'process'
-import * as os from 'os'
 
 export const hash = async (currentDir, filePath) => {
   const absolutePath = getAbsolutePath(currentDir, filePath)

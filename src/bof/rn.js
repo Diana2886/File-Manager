@@ -1,6 +1,6 @@
-import { rename } from 'fs/promises'
+import { rename } from 'node:fs/promises'
+import { join } from 'node:path'
 import { logOperationFailedMsg } from '../helpers/logErrorMsg.js'
-import { join } from 'path'
 import { getAbsolutePath } from '../helpers/getAbsolutePath.js'
 
 export const rn = async (currentDir, filePath, newFileName) => {
