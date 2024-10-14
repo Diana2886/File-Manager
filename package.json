@@ -1,0 +1,15 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=22.9.0"
+  },
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "Diana2886",
+  "license": "ISC",
+  "description": "The task for this project: https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-basics/assignment.md"
+}
