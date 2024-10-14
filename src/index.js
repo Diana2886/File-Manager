@@ -8,7 +8,7 @@ import { handleCommand } from './helpers/handleCommand.js'
 const runApp = () => {
   const userName = getUserName()
 
-  console.log(`Welcome to the File Manager, ${userName}!`)
+  console.log(`Welcome to the File Manager${userName ? ', ' + userName : ''}!`)
   printWorkingDirectory(cwd())
   prompt()
 
